@@ -97,23 +97,17 @@ function resultReport(marks) {
   const totalSubject = marks.length;
   let totalMarks = 0;
 
-  for (value of marks) {
-    if (typeof value !== "number") {
-      return "Invalid";
-    } else {
-      totalMarks += value;
-    }
-  }
-
   const averageMarks = totalMarks / totalSubject;
   defaultObj.finalScore = Math.round(averageMarks);
 
-  for (value of marks) {
+  for (const value of marks) {
     if (typeof value !== "number") {
       return "Invalid";
     } else if (value >= passMark) {
+      totalMarks += value;
       defaultObj.pass++;
     } else {
+      totalMarks += value;
       defaultObj.fail++;
     }
   }
